@@ -17,7 +17,7 @@ class ItemController extends Controller
     {
         //
         $items = Item::orderBy('id','desc')->paginate(1);
-        return view('backOffice.item-list',compact('items'));
+        return view('backoffice.item-list',compact('items'));
     }
 
     /**
@@ -28,7 +28,7 @@ class ItemController extends Controller
     public function create()
     {
         //
-        return view('backOffice.item-create');
+        return view('backoffice.item-create');
     }
 
     /**
