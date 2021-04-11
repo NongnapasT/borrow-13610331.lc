@@ -1,5 +1,6 @@
 <?php
 //http://www.borrow.lc/login
+Auth::routes();
 Route::get('/login','\App\Http\Controllers\User\LoginController@showLoginForm');
 //http://www.borrow.lc/auth/redirect
 Route::get('auth/redirect','\App\Http\Controllers\User\LoginController@redirectToProvider');
@@ -20,7 +21,7 @@ Route::group(['middleware'=>'auth'],function(){
 });
 Route::get('/back-office/login','\App\Http\Controllers\BackOffice\LoginController@showLoginForm');
 Route::post('/back-office/login','\App\Http\Controllers\BackOffice\LoginController@login');
-Route::post('/back-office/logout','\App\Http\Controllers\BackOffice\LogoutControllre@logout');
+Route::post('/back-office/logout','\App\Http\Controllers\BackOffice\LogoutController@logout');
 Route::group(['prefix'=>'back-office','middleware'=>['auth.admin']],function (){
     Route::resource('/item','\App\Http\Controllers\BackOffice\ItemController');
     Route::resource('/order','\App\Http\Controllers\BackOffice\OrderController');
